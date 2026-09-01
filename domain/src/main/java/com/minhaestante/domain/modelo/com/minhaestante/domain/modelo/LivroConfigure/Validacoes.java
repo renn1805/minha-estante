@@ -1,7 +1,7 @@
-package com.minhaestante.domain.modelo;
+package com.minhaestante.domain.modelo.LivroConfigure;
 
 public class Validacoes {
-    private String  validarETratarTexto(String texto, String nomeDoCampo){
+    public String  validarETratarTexto(String texto, String nomeDoCampo){
         if (texto == null || texto.trim().isEmpty()){
             throw new IllegalArgumentException("O campo " + nomeDoCampo + " não pode ser vazio!");
         }

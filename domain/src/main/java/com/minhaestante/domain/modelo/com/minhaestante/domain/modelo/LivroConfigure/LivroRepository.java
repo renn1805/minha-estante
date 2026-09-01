@@ -1,4 +1,6 @@
-package com.minhaestante.domain.modelo;
+package com.minhaestante.domain.modelo.LivroConfigure;
+import com.minhaestante.domain.modelo.Livro;
+
 import java.util.ArrayList;
 import java.util.List;
 
