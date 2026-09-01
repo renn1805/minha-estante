@@ -1,3 +1,5 @@
+package com.minhaestante.domain.modelo;
+
 public class Livro {
     private String titulo;
     private String sinopse;
