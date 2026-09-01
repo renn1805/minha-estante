@@ -2,7 +2,14 @@ public class Livro {
     private String titulo;
     private String sinopse;
     private String autor;
-    private byte capa[];
+    private byte[] capa;
+
+    public Livro(String titulo, String sinopse, String autor, byte[] capa) {
+        this.titulo = titulo;
+        this.sinopse = sinopse;
+        this.autor = autor;
+        this.capa = capa;
+    }
 
     public String getTitulo() {
         return titulo;
