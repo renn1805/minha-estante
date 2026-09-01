@@ -1,5 +1,5 @@
-package com.minhaestante.domain.modelo.LivroConfigure;
-import com.minhaestante.domain.modelo.Livro;
+package config;
+import model.Livro;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,5 +9,9 @@ public class LivroRepository {
 
         public void cadastrasLivro(Livro livro) {
             this.livros.add(livro);
+        }
+
+        public List<Livro> getLivros() {
+            return this.livros;
         }
 }

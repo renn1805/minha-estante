@@ -1,6 +1,6 @@
-package com.minhaestante.domain.modelo.LivroConfigure;
+package config;
 
-import com.minhaestante.domain.modelo.Livro;
+import model.Livro;
 
 public class LivroService {
     private Validacoes validar= new Validacoes();

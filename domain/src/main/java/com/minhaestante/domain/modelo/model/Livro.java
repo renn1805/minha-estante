@@ -1,4 +1,4 @@
-package com.minhaestante.domain.modelo;
+package model;
 
 public class Livro {
     private String titulo;

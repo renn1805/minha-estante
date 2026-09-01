@@ -1,4 +1,4 @@
-package com.minhaestante.domain.modelo.LivroConfigure;
+package config;
 
 public class Validacoes {
     public String  validarETratarTexto(String texto, String nomeDoCampo){
