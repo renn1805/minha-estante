@@ -1,9 +1,9 @@
-package main.java.com.minhaestante.domain.config;
+package com.minhaestante.domain.config;
 
-import main.java.com.minhaestante.domain.model.Livro;
+import com.minhaestante.domain.model.Livro;
 
 public class LivroService {
-    private Validacoes validar= new Validacoes();
+    private Validacoes validar = new Validacoes();
     public Livro criar(String titulo, String autor, String sinopse, byte[] capa){
         String tituloLimpo = validar.validarETratarTexto(titulo, "Titulo");
         String autorLimpo = validar.validarETratarTexto(autor, "Autor");
