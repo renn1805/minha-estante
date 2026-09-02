@@ -1,4 +1,4 @@
-package main.java.com.minhaestante.domain.model;
+package com.minhaestante.domain.model;
 
 public class Livro {
     private String titulo;
@@ -44,4 +44,6 @@ public class Livro {
     public void setCapa(byte[] capa) {
         this.capa = capa;
     }
+
+
 }
