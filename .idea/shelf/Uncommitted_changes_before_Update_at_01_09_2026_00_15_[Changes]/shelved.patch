@@ -1,0 +1,113 @@
+Index: app/src/main/java/com/app/myapplication/ui/theme/NavigationColors.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/myapplication/ui/theme/NavigationColors.kt b/app/src/main/java/com/app/myapplication/ui/theme/NavigationColors.kt
+new file mode 100644
+--- /dev/null	(date 1788231836153)
++++ b/app/src/main/java/com/app/myapplication/ui/theme/NavigationColors.kt	(date 1788231836153)
+@@ -0,0 +1,64 @@
++package com.app.myapplication.ui.theme
++
++import androidx.compose.material3.NavigationBarItemDefaults
++import androidx.compose.material3.NavigationDrawerItemDefaults
++import androidx.compose.material3.NavigationRailItemDefaults
++import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteColors
++import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
++import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItemColors
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.graphics.Color
++
++@Composable
++fun myNavigationSuiteColors(): NavigationSuiteColors {
++    return NavigationSuiteDefaults.colors(
++        navigationBarContainerColor = Color(0xFFF1F3F5),
++        navigationBarContentColor = Color(0xFF546E7A),
++
++        navigationRailContainerColor = Color(0xFFF8F9FA),
++        navigationRailContentColor = Color(0xFF546E7A),
++
++        navigationDrawerContainerColor = Color(0xFFF8F9FA),
++        navigationDrawerContentColor = Color(0xFF546E7A)
++    )
++}
++
++@Composable
++fun myNavigationSuiteItemColors(): NavigationSuiteItemColors {
++    return NavigationSuiteDefaults.itemColors(
++        navigationBarItemColors = NavigationBarItemDefaults.colors(
++            selectedIconColor = Color(0xFF263238),
++            selectedTextColor = Color(0xFF263238),
++            indicatorColor = Color(0xFFDCE8EE),
++
++            unselectedIconColor = Color(0xFF607D8B),
++            unselectedTextColor = Color(0xFF607D8B),
++
++            disabledIconColor = Color(0xFFB0BEC5),
++            disabledTextColor = Color(0xFFB0BEC5)
++        ),
++
++        navigationRailItemColors = NavigationRailItemDefaults.colors(
++            selectedIconColor = Color(0xFF263238),
++            selectedTextColor = Color(0xFF263238),
++            indicatorColor = Color(0xFFDCE8EE),
++
++            unselectedIconColor = Color(0xFF607D8B),
++            unselectedTextColor = Color(0xFF607D8B),
++
++            disabledIconColor = Color(0xFFB0BEC5),
++            disabledTextColor = Color(0xFFB0BEC5)
++        ),
++
++        navigationDrawerItemColors = NavigationDrawerItemDefaults.colors(
++            selectedContainerColor = Color(0xFFDCE8EE),
++            unselectedContainerColor = Color.Transparent,
++
++            selectedIconColor = Color(0xFF263238),
++            unselectedIconColor = Color(0xFF607D8B),
++
++            selectedTextColor = Color(0xFF263238),
++            unselectedTextColor = Color(0xFF607D8B)
++        )
++    )
++}
+\ No newline at end of file
+Index: app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt b/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt
+new file mode 100644
+--- /dev/null	(date 1788229508982)
++++ b/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt	(date 1788229508982)
+@@ -0,0 +1,27 @@
++package com.app.myapplication.ui.home
++
++import androidx.compose.foundation.layout.Box
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.padding
++import androidx.compose.foundation.layout.width
++import androidx.compose.material3.Text
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.text.style.TextAlign
++import androidx.compose.ui.unit.dp
++import com.app.myapplication.ui.theme.Typography
++
++@Composable
++fun HomeScreen(modifier: Modifier = Modifier) {
++
++    Box(
++        modifier = Modifier.fillMaxSize().padding(20.dp, 30.dp)
++    ){
++        Text(
++            text = "Meus Livros",
++            style = Typography.titleLarge,
++            modifier = Modifier.align(Alignment.TopCenter)
++        )
++    }
++}
+\ No newline at end of file
