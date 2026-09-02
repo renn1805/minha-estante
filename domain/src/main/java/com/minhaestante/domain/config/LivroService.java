@@ -1,6 +1,8 @@
-package main.java.com.minhaestante.domain.config;
+package com.minhaestante.domain.config;
 
-import main.java.com.minhaestante.domain.model.Livro;
+import com.minhaestante.domain.model.Livro;
+
+import main.java.com.minhaestante.domain.config.Validacoes;
 
 public class LivroService {
     private Validacoes validar= new Validacoes();

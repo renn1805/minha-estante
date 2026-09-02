@@ -1,0 +1,142 @@
+Index: app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.myapplication.ui.home\r\n\r\nimport androidx.compose.foundation.layout.Box\r\nimport androidx.compose.foundation.layout.fillMaxSize\r\nimport androidx.compose.foundation.layout.padding\r\nimport androidx.compose.foundation.layout.width\r\nimport androidx.compose.material3.Text\r\nimport androidx.compose.runtime.Composable\r\nimport androidx.compose.ui.Alignment\r\nimport androidx.compose.ui.Modifier\r\nimport androidx.compose.ui.text.style.TextAlign\r\nimport androidx.compose.ui.unit.dp\r\nimport com.app.myapplication.ui.theme.Typography\r\n\r\n@Composable\r\nfun HomeScreen(modifier: Modifier = Modifier) {\r\n\r\n    Box(\r\n        modifier = Modifier.fillMaxSize().padding(20.dp, 30.dp)\r\n    ){\r\n        Text(\r\n            text = \"Meus Livros\",\r\n            style = Typography.titleLarge,\r\n            modifier = Modifier.align(Alignment.TopCenter)\r\n        )\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt b/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt
+--- a/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt	(revision 6f399feb231afb6f1dfae7c3e7b14008a872963e)
++++ b/app/src/main/java/com/app/myapplication/ui/home/HomeScreen.kt	(date 1788313489426)
+@@ -3,14 +3,13 @@
+ import androidx.compose.foundation.layout.Box
+ import androidx.compose.foundation.layout.fillMaxSize
+ import androidx.compose.foundation.layout.padding
+-import androidx.compose.foundation.layout.width
+ import androidx.compose.material3.Text
+ import androidx.compose.runtime.Composable
+ import androidx.compose.ui.Alignment
+ import androidx.compose.ui.Modifier
+-import androidx.compose.ui.text.style.TextAlign
+ import androidx.compose.ui.unit.dp
+ import com.app.myapplication.ui.theme.Typography
++import com.minhaestante.domain.config.LivroRepository
+ 
+ @Composable
+ fun HomeScreen(modifier: Modifier = Modifier) {
+@@ -23,5 +22,12 @@
+             style = Typography.titleLarge,
+             modifier = Modifier.align(Alignment.TopCenter)
+         )
++
++        val repository = LivroRepository()
++
++        Feed(
++            livros = repository.livros
++        )
++
+     }
+ }
+\ No newline at end of file
+Index: domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.config;\r\n\r\nimport main.java.com.minhaestante.domain.model.Livro;\r\n\r\npublic class LivroService {\r\n    private Validacoes validar= new Validacoes();\r\n    public Livro criar(String titulo, String autor, String sinopse, byte[] capa){\r\n        String tituloLimpo = validar.validarETratarTexto(titulo, \"Titulo\");\r\n        String autorLimpo = validar.validarETratarTexto(autor, \"Autor\");\r\n        String sinopseLimpo = validar.validarETratarTexto(sinopse, \"Sinopse\");\r\n\r\n        return new Livro(tituloLimpo,  sinopseLimpo, autorLimpo, capa);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(revision 6f399feb231afb6f1dfae7c3e7b14008a872963e)
++++ b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(date 1788313589841)
+@@ -1,6 +1,8 @@
+-package main.java.com.minhaestante.domain.config;
++package com.minhaestante.domain.config;
+ 
+-import main.java.com.minhaestante.domain.model.Livro;
++import com.minhaestante.domain.model.Livro;
++
++import main.java.com.minhaestante.domain.config.Validacoes;
+ 
+ public class LivroService {
+     private Validacoes validar= new Validacoes();
+Index: app/src/main/java/com/app/myapplication/ui/home/Feed.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/myapplication/ui/home/Feed.kt b/app/src/main/java/com/app/myapplication/ui/home/Feed.kt
+new file mode 100644
+--- /dev/null	(date 1788313489444)
++++ b/app/src/main/java/com/app/myapplication/ui/home/Feed.kt	(date 1788313489444)
+@@ -0,0 +1,70 @@
++package com.app.myapplication.ui.home
++
++import androidx.compose.foundation.Image
++import androidx.compose.foundation.background
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Box
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.Row
++import androidx.compose.foundation.layout.Spacer
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.fillMaxWidth
++import androidx.compose.foundation.layout.height
++import androidx.compose.foundation.lazy.LazyColumn
++import androidx.compose.foundation.lazy.items
++import androidx.compose.foundation.shape.RoundedCornerShape
++import androidx.compose.material3.Text
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.graphics.Color
++import androidx.compose.ui.graphics.decodeToImageBitmap
++import androidx.compose.ui.unit.dp
++import com.app.myapplication.ui.theme.Typography
++import com.minhaestante.domain.model.Livro
++
++@Composable
++fun Feed(modifier: Modifier = Modifier, livros: List<Livro>) {
++    LazyColumn(
++        modifier = Modifier.fillMaxSize()
++    ) {
++        items(
++            livros
++        ) { livro ->
++            Column(
++                Modifier.fillMaxWidth()
++            ) {
++                Image(
++                    bitmap = livro.capa.decodeToImageBitmap(),
++                    contentDescription = livro.titulo,
++                    modifier = Modifier.fillMaxWidth().background(Color.Gray, RoundedCornerShape(10.dp)),
++                    alignment = Alignment.Center,
++                )
++                Spacer(Modifier.height(8.dp))
++                Text(
++                    text = livro.titulo,
++                    style = Typography.titleLarge
++                )
++                Spacer(Modifier.height(14.dp))
++                Text(
++                    text = livro.sinopse,
++                    style = Typography.bodyLarge
++                )
++                Spacer(Modifier.height(8.dp))
++                Row(
++                    Modifier.fillMaxWidth(),
++                    horizontalArrangement = Arrangement.spacedBy(10.dp)
++                ) {
++                    Text(
++                        text = "Autor:",
++                        style = Typography.titleMedium
++                    )
++                    Text(
++                        text = livro.autor,
++                        style = Typography.titleSmall
++                    )
++                }
++            }
++        }
++    }
++}
+\ No newline at end of file
