@@ -1,0 +1,65 @@
+Index: domain/src/main/java/com/minhaestante/domain/modelo/db/DataBaseConfig.java
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/modelo/db/DataBaseConfig.java b/domain/src/main/java/com/minhaestante/domain/backend/db/DataBaseConfig.java
+rename from domain/src/main/java/com/minhaestante/domain/modelo/db/DataBaseConfig.java
+rename to domain/src/main/java/com/minhaestante/domain/backend/db/DataBaseConfig.java
+--- a/domain/src/main/java/com/minhaestante/domain/modelo/db/DataBaseConfig.java	(revision d95309fd23cc82abb583c66ee1e598247c3e3931)
++++ b/domain/src/main/java/com/minhaestante/domain/backend/db/DataBaseConfig.java	(date 1788310324000)
+@@ -1,4 +1,4 @@
+-package db;
++package com.minhaestante.domain.backend.db;
+ 
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+Index: domain/src/main/java/com/minhaestante/domain/modelo/config/LivroService.java
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/modelo/config/LivroService.java b/domain/src/main/java/com/minhaestante/domain/backend/config/LivroService.java
+rename from domain/src/main/java/com/minhaestante/domain/modelo/config/LivroService.java
+rename to domain/src/main/java/com/minhaestante/domain/backend/config/LivroService.java
+--- a/domain/src/main/java/com/minhaestante/domain/modelo/config/LivroService.java	(revision d95309fd23cc82abb583c66ee1e598247c3e3931)
++++ b/domain/src/main/java/com/minhaestante/domain/backend/config/LivroService.java	(date 1788310322000)
+@@ -1,4 +1,4 @@
+-package config;
++package com.minhaestante.domain.backend.config;
+ 
+ import model.Livro;
+ 
+Index: domain/src/main/java/com/minhaestante/domain/modelo/config/Validacoes.java
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/modelo/config/Validacoes.java b/domain/src/main/java/com/minhaestante/domain/backend/config/Validacoes.java
+rename from domain/src/main/java/com/minhaestante/domain/modelo/config/Validacoes.java
+rename to domain/src/main/java/com/minhaestante/domain/backend/config/Validacoes.java
+--- a/domain/src/main/java/com/minhaestante/domain/modelo/config/Validacoes.java	(revision d95309fd23cc82abb583c66ee1e598247c3e3931)
++++ b/domain/src/main/java/com/minhaestante/domain/backend/config/Validacoes.java	(date 1788310322000)
+@@ -1,4 +1,4 @@
+-package config;
++package com.minhaestante.domain.backend.config;
+ 
+ public class Validacoes {
+     public String  validarETratarTexto(String texto, String nomeDoCampo){
+Index: domain/src/main/java/com/minhaestante/domain/modelo/config/LivroRepository.java
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/modelo/config/LivroRepository.java b/domain/src/main/java/com/minhaestante/domain/backend/config/LivroRepository.java
+rename from domain/src/main/java/com/minhaestante/domain/modelo/config/LivroRepository.java
+rename to domain/src/main/java/com/minhaestante/domain/backend/config/LivroRepository.java
+--- a/domain/src/main/java/com/minhaestante/domain/modelo/config/LivroRepository.java	(revision d95309fd23cc82abb583c66ee1e598247c3e3931)
++++ b/domain/src/main/java/com/minhaestante/domain/backend/config/LivroRepository.java	(date 1788310322000)
+@@ -1,4 +1,4 @@
+-package config;
++package com.minhaestante.domain.backend.config;
+ import model.Livro;
+ 
+ import java.util.ArrayList;
+Index: domain/src/main/java/com/minhaestante/domain/modelo/model/Livro.java
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/modelo/model/Livro.java b/domain/src/main/java/com/minhaestante/domain/backend/model/Livro.java
+rename from domain/src/main/java/com/minhaestante/domain/modelo/model/Livro.java
+rename to domain/src/main/java/com/minhaestante/domain/backend/model/Livro.java
+--- a/domain/src/main/java/com/minhaestante/domain/modelo/model/Livro.java	(revision d95309fd23cc82abb583c66ee1e598247c3e3931)
++++ b/domain/src/main/java/com/minhaestante/domain/backend/model/Livro.java	(date 1788310324000)
+@@ -1,4 +1,4 @@
+-package com.minhaestante.domain.modelo.model;
++package com.minhaestante.domain.backend.model;
+ 
+ public class Livro {
+     private String titulo;

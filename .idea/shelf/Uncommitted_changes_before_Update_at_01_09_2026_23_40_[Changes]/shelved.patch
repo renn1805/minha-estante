@@ -1,0 +1,110 @@
+Index: domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.config;\r\n\r\nimport main.java.com.minhaestante.domain.model.Livro;\r\n\r\npublic class LivroService {\r\n    private Validacoes validar= new Validacoes();\r\n    public Livro criar(String titulo, String autor, String sinopse, byte[] capa){\r\n        String tituloLimpo = validar.validarETratarTexto(titulo, \"Titulo\");\r\n        String autorLimpo = validar.validarETratarTexto(autor, \"Autor\");\r\n        String sinopseLimpo = validar.validarETratarTexto(sinopse, \"Sinopse\");\r\n\r\n        return new Livro(tituloLimpo,  sinopseLimpo, autorLimpo, capa);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(date 1788315496000)
+@@ -1,6 +1,6 @@
+ package main.java.com.minhaestante.domain.config;
+ 
+-import main.java.com.minhaestante.domain.model.Livro;
++import com.minhaestante.domain.model.Livro;
+ 
+ public class LivroService {
+     private Validacoes validar= new Validacoes();
+Index: domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.minhaestante.domain.config;\r\nimport com.minhaestante.domain.model.Livro;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collection;\r\nimport java.util.List;\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport java.nio.file.Files;\r\n\r\npublic class LivroRepository {\r\n\r\n    private byte[] carregarCapaDoDisco(String caminhoDaImagem) {\r\n        try {\r\n            File arquivoImagem = new File(caminhoDaImagem);\r\n            return Files.readAllBytes(arquivoImagem.toPath());\r\n        } catch (IOException e) {System.err.println(\"Erro ao carregar a imagem da capa: \" + e.getMessage());\r\n            return null;\r\n        }\r\n    }\r\n    private List<Livro> livros = new ArrayList<>(List.of(\r\n            new Livro(\r\n                    \"Entendendo Algoritmos\",\r\n                    \"Um guia ilustrado para programadores\",\r\n                    \"Aditya Y. Bhargava\",\r\n                    carregarCapaDoDisco(\"D:\\\\RenanGabriel\\\\domain\\\\src\\\\main\\\\java\\\\com\\\\minhaestante\\\\domain\\\\img\\\\imgteste.jpg\")\r\n            )\r\n    ));\r\n\r\n    //private List <Livro> livros = new ArrayList<>(\r\n     //        List.of(new Livro(\"Entendendo Algoritmos\", \"Aditya Y. Bhargava\", \"9788575225639\", null)));\r\n\r\n       public void cadastrasLivro(Livro livro) {\r\n           this.livros.add(livro);\r\n        }\r\n\r\n        public List<Livro> getLivros() {\r\n            return this.livros;\r\n        }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java b/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java	(date 1788315496000)
+@@ -1,8 +1,7 @@
+-package com.minhaestante.domain.config;
++package main.java.com.minhaestante.domain.config;
+ import com.minhaestante.domain.model.Livro;
+ 
+ import java.util.ArrayList;
+-import java.util.Collection;
+ import java.util.List;
+ import java.io.File;
+ import java.io.IOException;
+Index: domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.db;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class DataBaseConfig {\r\n    private static final String URL_BANCO = \"jdbc:sqlite:minha_estante.db\";\r\n\r\n    public static Connection getConnection() throws SQLException {\r\n        return DriverManager.getConnection(URL_BANCO);\r\n    }\r\n\r\n    public static void iniciarBanco(){\r\n        String sql = \"CREATE TABLE IF NOT EXISTS livros(\"\r\n                + \"id INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + \"titulo TEXT NOT NULL, \"\r\n                + \"autor TEXT NOT NULL, \"\r\n                + \"isbn TEXT\"\r\n                +\");\";\r\n\r\n        try (Connection conn = getConnection();\r\n        Statement stmt = conn.createStatement()){\r\n            stmt.execute(sql);\r\n        }catch (SQLException e) {\r\n            System.err.println(\"Erro ao inicializar a tabela no banco: \" + e.getMessage());\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java b/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java
+--- a/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java	(date 1788315648000)
+@@ -17,12 +17,14 @@
+                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                 + "titulo TEXT NOT NULL, "
+                 + "autor TEXT NOT NULL, "
+-                + "isbn TEXT"
++                + "sinopsi TEXT NOT NULL,"
++                + "capa BLOB"
+                 +");";
+ 
+         try (Connection conn = getConnection();
+         Statement stmt = conn.createStatement()){
+             stmt.execute(sql);
++            System.out.println("Tabela 'livros' inicializada com sucesso.");
+         }catch (SQLException e) {
+             System.err.println("Erro ao inicializar a tabela no banco: " + e.getMessage());
+         }
+Index: domain/.gitignore
+===================================================================
+diff --git a/domain/.gitignore b/domain/.gitignore
+deleted file mode 100644
+--- a/domain/.gitignore	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ /dev/null	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
+@@ -1,1 +0,0 @@
+-/build
+\ No newline at end of file
+Index: .idea/AndroidProjectSystem.xml
+===================================================================
+diff --git a/.idea/AndroidProjectSystem.xml b/.idea/AndroidProjectSystem.xml
+deleted file mode 100644
+--- a/.idea/AndroidProjectSystem.xml	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ /dev/null	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AndroidProjectSystem">
+-    <option name="providerId" value="com.android.tools.idea.GradleProjectSystem" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: domain/build.gradle.kts
+===================================================================
+diff --git a/domain/build.gradle.kts b/domain/build.gradle.kts
+deleted file mode 100644
+--- a/domain/build.gradle.kts	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ /dev/null	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
+@@ -1,7 +0,0 @@
+-plugins {
+-    id("java-library")
+-}
+-java {
+-    sourceCompatibility = JavaVersion.VERSION_11
+-    targetCompatibility = JavaVersion.VERSION_11
+-}
+Index: .idea/.name
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+deleted file mode 100644
+--- a/.idea/.name	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ /dev/null	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
+@@ -1,1 +0,0 @@
+-My Application
+\ No newline at end of file

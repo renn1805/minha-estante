@@ -23,6 +23,8 @@ public class DataBaseConfig {
         try (Connection conn = getConnection();
         Statement stmt = conn.createStatement()){
             stmt.execute(sql);
+
+            System.out.println("");
         }catch (SQLException e) {
             System.err.println("Erro ao inicializar a tabela no banco: " + e.getMessage());
         }

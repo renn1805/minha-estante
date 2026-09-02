@@ -1,0 +1,102 @@
+Index: domain/src/main/java/com/minhaestante/domain/search/ConfigBuscar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.minhaestante.domain.search;\r\n\r\npublic class ConfigBuscar{\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/search/ConfigBuscar.java b/domain/src/main/java/com/minhaestante/domain/search/ConfigBuscar.java
+--- a/domain/src/main/java/com/minhaestante/domain/search/ConfigBuscar.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/search/ConfigBuscar.java	(date 1788318256000)
+@@ -1,4 +1,4 @@
+-package com.minhaestante.domain.search;
++package src.main.java.com.minhaestante.domain.search;
+ 
+ public class ConfigBuscar{
+ 
+Index: domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.config;\r\n\r\nimport main.java.com.minhaestante.domain.model.Livro;\r\n\r\npublic class LivroService {\r\n    private Validacoes validar= new Validacoes();\r\n    public Livro criar(String titulo, String autor, String sinopse, byte[] capa){\r\n        String tituloLimpo = validar.validarETratarTexto(titulo, \"Titulo\");\r\n        String autorLimpo = validar.validarETratarTexto(autor, \"Autor\");\r\n        String sinopseLimpo = validar.validarETratarTexto(sinopse, \"Sinopse\");\r\n\r\n        return new Livro(tituloLimpo,  sinopseLimpo, autorLimpo, capa);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/config/LivroService.java	(date 1788318256000)
+@@ -1,6 +1,7 @@
+-package main.java.com.minhaestante.domain.config;
++package src.main.java.com.minhaestante.domain.config;
+ 
+-import main.java.com.minhaestante.domain.model.Livro;
++import src.main.java.com.minhaestante.domain.model.*;
++import src.main.java.com.minhaestante.domain.config.*;
+ 
+ public class LivroService {
+     private Validacoes validar= new Validacoes();
+Index: domain/src/main/java/com/minhaestante/domain/config/Validacoes.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.config;\r\n\r\npublic class Validacoes {\r\n    public String  validarETratarTexto(String texto, String nomeDoCampo){\r\n        if (texto == null || texto.trim().isEmpty()){\r\n            throw new IllegalArgumentException(\"O campo \" + nomeDoCampo + \" não pode ser vazio!\");\r\n        }\r\n        return texto.trim();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/Validacoes.java b/domain/src/main/java/com/minhaestante/domain/config/Validacoes.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/Validacoes.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/config/Validacoes.java	(date 1788318256000)
+@@ -1,4 +1,4 @@
+-package main.java.com.minhaestante.domain.config;
++package src.main.java.com.minhaestante.domain.config;
+ 
+ public class Validacoes {
+     public String  validarETratarTexto(String texto, String nomeDoCampo){
+Index: domain/src/main/java/com/minhaestante/domain/model/Livro.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.minhaestante.domain.model;\r\n\r\npublic class Livro {\r\n    private String titulo;\r\n    private String sinopse;\r\n    private String autor;\r\n    private byte[] capa;\r\n\r\n    public Livro(String titulo, String sinopse, String autor, byte[] capa) {\r\n        this.titulo = titulo;\r\n        this.sinopse = sinopse;\r\n        this.autor = autor;\r\n        this.capa = capa;\r\n    }\r\n\r\n    public String getTitulo() {\r\n        return titulo;\r\n    }\r\n\r\n    public void setTitulo(String titulo) {\r\n        this.titulo = titulo;\r\n    }\r\n\r\n    public String getSinopse() {\r\n        return sinopse;\r\n    }\r\n\r\n    public void setSinopse(String sinopse) {\r\n        this.sinopse = sinopse;\r\n    }\r\n\r\n    public String getAutor() {\r\n        return autor;\r\n    }\r\n\r\n    public void setAutor(String autor) {\r\n        this.autor = autor;\r\n    }\r\n\r\n    public byte[] getCapa() {\r\n        return capa;\r\n    }\r\n\r\n    public void setCapa(byte[] capa) {\r\n        this.capa = capa;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/model/Livro.java b/domain/src/main/java/com/minhaestante/domain/model/Livro.java
+--- a/domain/src/main/java/com/minhaestante/domain/model/Livro.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/model/Livro.java	(date 1788318256000)
+@@ -1,4 +1,4 @@
+-package com.minhaestante.domain.model;
++package src.main.java.com.minhaestante.domain.model;
+ 
+ public class Livro {
+     private String titulo;
+Index: domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.minhaestante.domain.config;\r\nimport com.minhaestante.domain.model.Livro;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collection;\r\nimport java.util.List;\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport java.nio.file.Files;\r\n\r\npublic class LivroRepository {\r\n\r\n    private byte[] carregarCapaDoDisco(String caminhoDaImagem) {\r\n        try {\r\n            File arquivoImagem = new File(caminhoDaImagem);\r\n            return Files.readAllBytes(arquivoImagem.toPath());\r\n        } catch (IOException e) {System.err.println(\"Erro ao carregar a imagem da capa: \" + e.getMessage());\r\n            return null;\r\n        }\r\n    }\r\n    private List<Livro> livros = new ArrayList<>(List.of(\r\n            new Livro(\r\n                    \"Entendendo Algoritmos\",\r\n                    \"Um guia ilustrado para programadores\",\r\n                    \"Aditya Y. Bhargava\",\r\n                    carregarCapaDoDisco(\"D:\\\\RenanGabriel\\\\domain\\\\src\\\\main\\\\java\\\\com\\\\minhaestante\\\\domain\\\\img\\\\imgteste.jpg\")\r\n            )\r\n    ));\r\n\r\n    //private List <Livro> livros = new ArrayList<>(\r\n     //        List.of(new Livro(\"Entendendo Algoritmos\", \"Aditya Y. Bhargava\", \"9788575225639\", null)));\r\n\r\n       public void cadastrasLivro(Livro livro) {\r\n           this.livros.add(livro);\r\n        }\r\n\r\n        public List<Livro> getLivros() {\r\n            return this.livros;\r\n        }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java b/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java
+--- a/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/config/LivroRepository.java	(date 1788318256000)
+@@ -1,5 +1,5 @@
+-package com.minhaestante.domain.config;
+-import com.minhaestante.domain.model.Livro;
++package src.main.java.com.minhaestante.domain.config;
++import src.main.java.com.minhaestante.domain.model.Livro;
+ 
+ import java.util.ArrayList;
+ import java.util.Collection;
+Index: domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.java.com.minhaestante.domain.db;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class DataBaseConfig {\r\n    private static final String URL_BANCO = \"jdbc:sqlite:minha_estante.db\";\r\n\r\n    public static Connection getConnection() throws SQLException {\r\n        return DriverManager.getConnection(URL_BANCO);\r\n    }\r\n\r\n    public static void iniciarBanco(){\r\n        String sql = \"CREATE TABLE IF NOT EXISTS livros(\"\r\n                + \"id INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + \"titulo TEXT NOT NULL, \"\r\n                + \"autor TEXT NOT NULL, \"\r\n                + \"isbn TEXT\"\r\n                +\");\";\r\n\r\n        try (Connection conn = getConnection();\r\n        Statement stmt = conn.createStatement()){\r\n            stmt.execute(sql);\r\n        }catch (SQLException e) {\r\n            System.err.println(\"Erro ao inicializar a tabela no banco: \" + e.getMessage());\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java b/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java
+--- a/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java	(revision 68823cc4bbb2d48eb23309b2562711fa399f0a72)
++++ b/domain/src/main/java/com/minhaestante/domain/db/DataBaseConfig.java	(date 1788318256000)
+@@ -1,4 +1,4 @@
+-package main.java.com.minhaestante.domain.db;
++package src.main.java.com.minhaestante.domain.db;
+ 
+ import java.sql.Connection;
+ import java.sql.DriverManager;
