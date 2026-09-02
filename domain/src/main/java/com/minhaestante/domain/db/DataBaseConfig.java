@@ -1,4 +1,4 @@
-package db;
+package main.java.com.minhaestante.domain.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package config;
+package main.java.com.minhaestante.domain.config;
 
 public class Validacoes {
     public String  validarETratarTexto(String texto, String nomeDoCampo){
