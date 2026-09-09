@@ -18,7 +18,11 @@ public class SearchApiGoogleBooks {
                 .build();
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response);
+        if (response.statusCode() == 200) {
+            System.out.println(response.body());
+        }else {
+            System.out.println("Erro na requisição. Código HTTP: " + response.statusCode());
+        }
         
     }
 }
