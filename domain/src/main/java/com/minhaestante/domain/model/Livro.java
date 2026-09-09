@@ -1,40 +1,33 @@
 package com.minhaestante.domain.model;
 
 public class Livro {
-    private String titulo;
-    private String sinopse;
-    private String autor;
-    private byte[] capa;
+        private String titulo;
+        private String sinopse;
+        private String autor;
+        private int paginas;
+        private byte[] capa;
 
-    public Livro(String titulo, String sinopse, String autor, byte[] capa) {
+    public Livro(String titulo, String sinopse, String autor, int paginas) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.autor = autor;
-        this.capa = capa;
+        this.paginas = paginas;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getSinopse() {
         return sinopse;
-    }
-
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
     }
 
     public String getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public int getPaginas() {
+        return paginas;
     }
 
     public byte[] getCapa() {
@@ -45,5 +38,8 @@ public class Livro {
         this.capa = capa;
     }
 
-
+    @Override
+    public String toString() {
+        return "Titulo: " + getTitulo() + " | " + "Sinopse: " + getSinopse() + " | " + " Autor " + getAutor() + " Paginas: " + getPaginas();
+    }
 }
