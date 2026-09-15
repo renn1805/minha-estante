@@ -1,4 +1,4 @@
-package com.minhaestante.domain.search;
+package com.minhaestante.domain.service;
 
 import com.minhaestante.domain.model.Livro;
 

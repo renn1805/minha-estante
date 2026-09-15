@@ -7,11 +7,12 @@ public class Livro {
         private int paginas;
         private byte[] capa;
 
-    public Livro(String titulo, String sinopse, String autor, int paginas) {
+    public Livro(String titulo, String sinopse, String autor, int paginas, byte[] capa) {
         this.titulo = titulo;
         this.sinopse = sinopse;
         this.autor = autor;
         this.paginas = paginas;
+        this.capa = capa;
     }
 
     public String getTitulo() {
@@ -40,6 +41,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Titulo: " + getTitulo() + " | " + "Sinopse: " + getSinopse() + " | " + " Autor " + getAutor() + " Paginas: " + getPaginas();
+        return "Titulo: " + getTitulo() + "\n | " + "Sinopse: " + getSinopse() + "\n | " + " Autor " + getAutor() + "\n | " + " Paginas: " + getPaginas();
     }
 }
